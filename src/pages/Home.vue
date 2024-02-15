@@ -7,19 +7,19 @@
     </div>
 
     <div class="origin inputFileds">
-      <selectInput :parameter="'Origin'" :places="newOriginPlaces" @input-change="handleInputChange" />
+      <selectInput :parameter="'Origin'" :errorMessage="originError" :places="newOriginPlaces" @input-change="handleInputChange" />
     </div>
     <div class="destination inputFileds">
-      <selectInput :parameter="'Destination'" :places="newDestinationPlaces" @input-change="handleInputChange" />
+      <selectInput :parameter="'Destination'" :errorMessage="destinationError" :places="newDestinationPlaces" @input-change="handleInputChange" />
     </div>
     <div class="departure inputFileds">
-      <dateInput :parameter="'Departure'" :currentDate="currentDate" @input-change="handleInputChange" />
+      <dateInput :parameter="'Departure'" :errorMessage="departureError" :currentDate="currentDate" @input-change="handleInputChange" />
     </div>
     <div class="return inputFileds">
       <dateInput :parameter="'Return'" :currentDate="choosenDate" :valid="valid" @input-change="handleInputChange" />
     </div>
     <div class="submSec">
-      <button class="searchButt" @click="changeOriginName()">Search</button>
+      <button class="searchButt" @click="buttClick()">Search</button>
     </div>
 
   </div>
@@ -52,6 +52,9 @@ export default defineComponent({
       currentDate: new Date().toISOString().slice(0, 10),
       choosenDate: '',
       valid: true,
+      originError: '',
+      destinationError: '',
+      departureError: '',
     };
   },
   methods: {
@@ -62,10 +65,12 @@ export default defineComponent({
         case 'Origin':
           this.origin = newValue;
           this.checkPlaces[0] = newValue;
+          this.originError = '';
           break;
         case 'Destination':
           this.destination = newValue;
           this.checkPlaces[1] = newValue;
+          this.destinationError = '';
           break;
         case 'Departure':
           this.departure = newValue;
@@ -76,6 +81,7 @@ export default defineComponent({
           } else {
             this.valid = true;
           }
+          this.departureError = '';
 
 
           break;
@@ -103,10 +109,22 @@ export default defineComponent({
       this.destinationPlaces = Array.from(new Set((data.flights.map(place => place.destination))));
       this.newDestinationPlaces = Array.from(new Set((data.flights.map(place => place.destination))));
     },
-    changeOriginName() {
-      this.$store.dispatch('module/saveSearchParams', { origin: this.origin, destination: this.destination, departure: this.departure, return: this.return_ });
-      this.$router.push({ name: 'selectFlight'});
-      //this.$router.push({ name: 'selectFlight', params: { origin: this.origin }});
+    buttClick() {
+      if(this.origin === '') {
+        this.originError = 'Please select origin';
+      }
+      if(this.destination === '') {
+        this.destinationError = 'Please select destination';
+      }
+      if(this.departure === '') {
+        this.departureError = 'Please select departure date';
+      }
+      if(this.origin != '' && this.destination != '' && this.departure != '') {
+        this.$store.dispatch('module/saveSearchParams', { origin: this.origin, destination: this.destination, departure: this.departure, return: this.return_ });
+        this.$router.push({ name: 'selectFlight'});
+        //this.$router.push({ name: 'selectFlight', params: { origin: this.origin }});
+      }
+
     }
   },
   computed: {

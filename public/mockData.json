@@ -3,7 +3,7 @@
     {
       "origin": "London",
       "destination": "Paris",
-      "departure": "2024-10-03",
+      "departure": "2024-10-04",
       "timeStart": "19:30",
       "timeFinish": "23:30",
       "priceBasic": "9.99",
@@ -14,7 +14,7 @@
     {
       "origin": "Paris",
       "destination": "London",
-      "departure": "2024-10-03",
+      "departure": "2024-10-05",
       "timeStart": "19:30",
       "timeFinish": "23:30",
       "priceBasic": "9.99",

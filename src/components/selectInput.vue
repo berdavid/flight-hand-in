@@ -1,16 +1,17 @@
 <template>
   <div class="selectInputCont">
     <label :id="parameter + '_placeholder'" class="placeholder" :style="selectedOption || focused ? 'top: -24%; font-size: 13px; font-weight: bold;' : 'top: 0; font-size: 20px; font-weight: unset;'">{{ parameter }}</label>
-    <input v-model="selectedOption" @input="oninput(selectedOption)" @focusout="openOpt(false)" @focus="openOpt(true)" class="selectInput">
+    <input v-model="selectedOption" @input="oninput(selectedOption)" @focusout="openOpt(false)" @focus="openOpt(true)" class="selectInput" :style="errorMessage == '' || errorMessage == null ? 'border: solid 2px #b1b1b1;' : 'border: solid 2px #C10015;'">
     <div :id="parameter + '_selectOptsCont'" class="selectOptsCont">
       <div v-for="(option,i) in places" :key="i" class="selectOption" @click="selectOpt(option)">{{ option }}</div>
     </div>
+    <p v-if="errorMessage != '' && errorMessage != null" class="inputError"><q-icon name="warning"></q-icon> {{ errorMessage }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['parameter', 'places'],
+  props: ['parameter', 'places', 'errorMessage'],
   data() {
     return {
       selectedOption: null,
@@ -121,6 +122,14 @@ $size: 70px;
     background-color: $nonHighlighted;
     color: $light;
   }
+}
+.inputError {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: $negative;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 

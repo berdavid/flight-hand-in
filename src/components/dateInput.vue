@@ -1,14 +1,15 @@
 <template>
   <div class="dateInputCont">
     <label :id="parameter + '_placeholderDate'" class="placeholderDate" >{{ parameter }}</label>
-    <input type="date" id="date" v-model="selectedDate" :disabled="valid" @input="oninputDate(selectedDate, $event.target)" :min="currentDate" class="dateInput">
+    <input type="date" id="date" v-model="selectedDate" :disabled="valid" @input="oninputDate(selectedDate, $event.target)" :min="currentDate" class="dateInput" :style="errorMessage == '' || errorMessage == null ? 'border: solid 2px #b1b1b1;' : 'border: solid 2px #C10015;'">
+    <p v-if="errorMessage != '' && errorMessage != null" class="inputError"><q-icon name="warning"></q-icon> {{ errorMessage }}</p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'DateInput',
-  props: ['parameter', 'currentDate', 'valid'],
+  props: ['parameter', 'currentDate', 'valid', 'errorMessage'],
   data() {
     return {
       selectedDate: null,
@@ -101,6 +102,14 @@ $size: 70px;
 }
 .dateInputTransl {
     color: black;
+}
+.inputError {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: $negative;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 </style>

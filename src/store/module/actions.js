@@ -5,3 +5,6 @@ export function saveSearchParams (context, payload) {
   context.commit('returnDateMutation', payload.return)
 }
 
+export function saveReturnParams (context, payload) {
+  context.commit('returnDateMutation', payload.return)
+}
