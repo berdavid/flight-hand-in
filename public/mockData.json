@@ -1,0 +1,125 @@
+{
+  "flights": [
+    {
+      "origin": "London",
+      "destination": "Paris",
+      "departure": "2024-10-03",
+      "timeStart": "19:30",
+      "timeFinish": "23:30",
+      "priceBasic": "9.99",
+      "priceStandard": "19.99",
+      "pricePlus": "29.99",
+      "remainingTickets": "10"
+    },
+    {
+      "origin": "Paris",
+      "destination": "London",
+      "departure": "2024-10-03",
+      "timeStart": "19:30",
+      "timeFinish": "23:30",
+      "priceBasic": "9.99",
+      "priceStandard": "19.99",
+      "pricePlus": "29.99",
+      "remainingTickets": "10"
+    },
+    {
+      "origin": "Berlin",
+      "destination": "Rome",
+      "departure": "2022-10-02",
+      "timeStart": "08:00",
+      "timeFinish": "11:30",
+      "priceBasic": "9.99",
+      "priceStandard": "19.99",
+      "pricePlus": "29.99",
+      "remainingTickets": "10"
+    },
+    {
+      "origin": "Madrid",
+      "destination": "Amsterdam",
+      "departure": "2022-10-03",
+      "timeStart": "13:45",
+      "timeFinish": "17:15",
+      "priceBasic": "9.99",
+      "priceStandard": "19.99",
+      "pricePlus": "29.99",
+      "remainingTickets": "10"
+    },
+    {
+      "origin": "Athens",
+      "destination": "Dublin",
+      "departure": "2022-10-04",
+      "timeStart": "10:30",
+      "timeFinish": "14:45",
+      "priceBasic": "9.99",
+      "priceStandard": "19.99",
+      "pricePlus": "29.99",
+      "remainingTickets": "10"
+    },
+    {
+      "origin": "Paris",
+      "destination": "London",
+      "departure": "2022-10-05",
+      "timeStart": "16:20",
+      "timeFinish": "18:45",
+      "priceBasic": "9.99",
+      "priceStandard": "19.99",
+      "pricePlus": "29.99",
+      "remainingTickets": "10"
+    },
+    {
+      "origin": "Rome",
+      "destination": "Berlin",
+      "departure": "2022-10-06",
+      "timeStart": "09:15",
+      "timeFinish": "12:30",
+      "priceBasic": "9.99",
+      "priceStandard": "19.99",
+      "pricePlus": "29.99",
+      "remainingTickets": "10"
+    },
+    {
+      "origin": "Amsterdam",
+      "destination": "Madrid",
+      "departure": "2022-10-07",
+      "timeStart": "14:50",
+      "timeFinish": "18:25",
+      "priceBasic": "9.99",
+      "priceStandard": "19.99",
+      "pricePlus": "29.99",
+      "remainingTickets": "10"
+    },
+    {
+      "origin": "Dublin",
+      "destination": "Athens",
+      "departure": "2022-10-08",
+      "timeStart": "11:10",
+      "timeFinish": "15:30",
+      "priceBasic": "9.99",
+      "priceStandard": "19.99",
+      "pricePlus": "29.99",
+      "remainingTickets": "10"
+    },
+    {
+      "origin": "London",
+      "destination": "Berlin",
+      "departure": "2022-10-09",
+      "timeStart": "07:30",
+      "timeFinish": "10:15",
+      "priceBasic": "9.99",
+      "priceStandard": "19.99",
+      "pricePlus": "29.99",
+      "remainingTickets": "10"
+    },
+    {
+      "origin": "Berlin",
+      "destination": "Paris",
+      "departure": "2022-10-10",
+      "timeStart": "11:45",
+      "timeFinish": "15:00",
+      "priceBasic": "9.99",
+      "priceStandard": "19.99",
+      "pricePlus": "29.99",
+      "remainingTickets": "10"
+    }
+  ]
+}
