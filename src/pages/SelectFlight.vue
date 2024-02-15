@@ -73,9 +73,9 @@
         <div class="flightOptionsInfo"><button><q-icon class="ico" name="arrow_back_ios"></q-icon>Wed 7 October</button>{{ formatDate(departureDate) }}<button>Sat 10 october<q-icon class="ico" name="arrow_forward_ios"></q-icon></button></div>
         <template v-for="(date, i) in dates" :key="i">
           <div class="flightOptionsItem">{{ date.timeStart }} - {{ date.timeEnd }}</div>
-          <div class="flightOptionsItem"><p class="p" @click="addToCart($event.target, originName, destinationName, date.timeStart, date.timeEnd, date.priceA)">${{ date.priceA }}</p><div v-if="i == 0">Basic</div></div>
-          <div class="flightOptionsItem middle"><p class="p" @click="addToCart($event.target, originName, destinationName, date.timeStart, date.timeEnd, date.priceB)">${{ date.priceB }}</p><div v-if="i == 0">Standard</div></div>
-          <div class="flightOptionsItem"><p class="p" @click="addToCart($event.target, originName, destinationName, date.timeStart, date.timeEnd, date.priceC)">${{ date.priceC }}</p><div v-if="i == 0">Plus</div></div>
+          <div class="flightOptionsItem"><p v-if="date.remainingTickets > 0" class="p" @click="addToCart($event.target, originName, destinationName, date.timeStart, date.timeEnd, date.priceA)">${{ date.priceA }}</p><p v-else class="p" >no ticket</p><div v-if="i == 0">Basic</div></div>
+          <div class="flightOptionsItem middle"><p v-if="date.remainingTickets > 0" class="p" @click="addToCart($event.target, originName, destinationName, date.timeStart, date.timeEnd, date.priceB)">${{ date.priceB }}</p><p v-else class="p" >no ticket</p><div v-if="i == 0">Standard</div></div>
+          <div class="flightOptionsItem"><p v-if="date.remainingTickets > 0" class="p" @click="addToCart($event.target, originName, destinationName, date.timeStart, date.timeEnd, date.priceC)">${{ date.priceC }}</p><p v-else class="p" >no ticket</p><div v-if="i == 0">Plus</div></div>
         </template>
       </div>
       <div class="flightOptionsCont">
@@ -88,9 +88,9 @@
           <div class="flightOptionsInfo"><button><q-icon class="ico" name="arrow_back_ios"></q-icon>Wed 7 October</button>{{ formatDate(returnDate) }}<button>Sat 10 october<q-icon class="ico" name="arrow_forward_ios"></q-icon></button></div>
           <template v-for="(date, i) in datesB" :key="i">
             <div class="flightOptionsItem">{{ date.timeStart }} - {{ date.timeEnd }}</div>
-            <div class="flightOptionsItem"><p class="pb" @click="addToCartB($event.target, destinationName, originName, date.timeStart, date.timeEnd, date.priceA)">${{ date.priceA }}</p><div v-if="i == 0">Basic</div></div>
-            <div class="flightOptionsItem middle"><p class="pb" @click="addToCartB($event.target, destinationName, originName, date.timeStart, date.timeEnd, date.priceB)">${{ date.priceB }}</p><div v-if="i == 0">Standard</div></div>
-            <div class="flightOptionsItem"><p class="pb" @click="addToCartB($event.target, destinationName, originName, date.timeStart, date.timeEnd, date.priceC)">${{ date.priceC }}</p><div v-if="i == 0">Plus</div></div>
+            <div class="flightOptionsItem"><p v-if="date.remainingTickets > 0" class="pb" @click="addToCartB($event.target, destinationName, originName, date.timeStart, date.timeEnd, date.priceA)">${{ date.priceA }}</p><p v-else class="p" >no ticket</p><div v-if="i == 0">Basic</div></div>
+            <div class="flightOptionsItem middle"><p v-if="date.remainingTickets > 0" class="pb" @click="addToCartB($event.target, destinationName, originName, date.timeStart, date.timeEnd, date.priceB)">${{ date.priceB }}</p><p v-else class="p" >no ticket</p><div v-if="i == 0">Standard</div></div>
+            <div class="flightOptionsItem"><p v-if="date.remainingTickets > 0" class="pb" @click="addToCartB($event.target, destinationName, originName, date.timeStart, date.timeEnd, date.priceC)">${{ date.priceC }}</p><p v-else class="p" >no ticket</p><div v-if="i == 0">Plus</div></div>
           </template>
         </template>
         <template v-else>
@@ -182,7 +182,8 @@ export default {
               timeEnd: this.allData[i].timeFinish,
               priceA: this.allData[i].priceBasic,
               priceB: this.allData[i].priceStandard,
-              priceC: this.allData[i].pricePlus
+              priceC: this.allData[i].pricePlus,
+              remainingTickets: this.allData[i].remainingTickets
           });
         }
       }
@@ -195,7 +196,8 @@ export default {
               timeEnd: this.allData[i].timeFinish,
               priceA: this.allData[i].priceBasic,
               priceB: this.allData[i].priceStandard,
-              priceC: this.allData[i].pricePlus
+              priceC: this.allData[i].pricePlus,
+              remainingTickets: this.allData[i].remainingTickets
           });
         }
       }
@@ -262,7 +264,7 @@ export default {
           destination: destination,
           timeStart: timeStart,
           timeEnd: timeEnd,
-          price: price
+          price: price,
         });
 
         const thatDate = this.returnDate

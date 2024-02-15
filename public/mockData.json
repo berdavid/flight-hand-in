@@ -25,13 +25,24 @@
     {
       "origin": "Berlin",
       "destination": "Rome",
-      "departure": "2022-10-02",
+      "departure": "2024-10-02",
       "timeStart": "08:00",
       "timeFinish": "11:30",
       "priceBasic": "9.99",
       "priceStandard": "19.99",
       "pricePlus": "29.99",
       "remainingTickets": "10"
+    },
+    {
+      "origin": "Rome",
+      "destination": "Berlin",
+      "departure": "2024-10-02",
+      "timeStart": "08:00",
+      "timeFinish": "11:30",
+      "priceBasic": "9.99",
+      "priceStandard": "19.99",
+      "pricePlus": "29.99",
+      "remainingTickets": "0"
     },
     {
       "origin": "Madrid",
